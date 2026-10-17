@@ -1,0 +1,29 @@
+:root {
+  --primary: #0064b4;
+  --secondary: #002244;
+  --accent: #f37123;
+  --bwhite: #fcfdfd;
+}
+nav {
+  background-color: var(--primary);
+  padding: 20px 10px;
+}
+
+.nav-link {
+  color: var(--bwhite);
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: rgba(252, 253, 253, 0.8);
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bwhite);
+  color: var(--secondary);
+}
+
+a {
+  color: var(--primary);
+}
