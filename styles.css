@@ -1,9 +1,24 @@
 :root {
-  --primary: #0064b4;
+  --primary: rgb(0, 100, 180);
   --secondary: #002244;
   --accent: #f37123;
+  --accent-2: rgb(251, 79, 20);
   --bwhite: #fcfdfd;
+  --bwhite-70: rgba(252, 253, 253, 0.7);
 }
+
+@keyframes CustomAnimation {
+  0% {
+    background-position: 83% 0%;
+  }
+  50% {
+    background-position: 18% 100%;
+  }
+  100% {
+    background-position: 83% 0%;
+  }
+}
+
 nav {
   background-color: var(--primary);
   padding: 20px 10px;
@@ -15,7 +30,7 @@ nav {
 }
 
 .nav-link:hover {
-  color: rgba(252, 253, 253, 0.8);
+  color: var(--bwhite-70);
 }
 
 html {
@@ -26,4 +41,55 @@ html {
 
 a {
   color: var(--primary);
+}
+
+body {
+  margin: 0px;
+  background: linear-gradient(233deg, rgb(0, 100, 180, 0.2), var(--bwhite)) 0%
+    0% / 200% 200%;
+  animation: 7s ease 0s infinite normal none running CustomAnimation;
+}
+
+main {
+  padding: 12px 36px;
+}
+
+.link-button {
+  display: inline-block;
+  padding: 0.25em 1em;
+  background-color: var(--accent);
+  text-decoration: none;
+  border-radius: 0.6em;
+  border: 0;
+  color: var(--bwhite);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 150ms ease-in-out;
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: var(--accent-2);
+    z-index: -1;
+    transition: width 150ms ease-in-out;
+    border-radius: 12px;
+  }
+
+  &:hover {
+    color: #fff;
+    &:after {
+      width: 110%;
+    }
+  }
+}
+
+.name {
+  text-align: center;
 }
