@@ -197,3 +197,42 @@ h1 {
   background-color: var(--primary);
   color: var(--bwhite);
 }
+
+/* Keep the oversized aurora background from causing sideways scroll */
+html,
+body {
+  overflow-x: clip;
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding: 1rem;
+  }
+
+  .hero,
+  .bg-blue,
+  .no-bg {
+    padding: 1.5rem 1rem;
+  }
+
+  .name {
+    font-size: 1.75rem;
+  }
+
+  .links {
+    flex-wrap: wrap;
+  }
+
+  .link-button {
+    font-size: 0.9rem;
+    padding: 0.5em 0.9em;
+  }
+
+  .bg-blue p {
+    line-height: 1.5;
+  }
+
+  .no-bg {
+    justify-content: center;
+  }
+}
