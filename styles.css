@@ -1,36 +1,50 @@
-@font-face {
-  font-family: "PP Neue Gstaad";
-  src: url("public/PPNeueGstaad-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  --primary: rgb(0, 100, 180);
-  --secondary: #002244;
-  --accent: #f37123;
-  --accent-2: rgb(251, 79, 20);
-  --bwhite: #fcfdfd;
-  --bwhite-70: rgba(252, 253, 253, 0.7);
-}
+  --primary-50: rgb(244 245 243);
+  --primary-100: rgb(232 234 231);
+  --primary-200: rgb(198 203 195);
+  --primary-300: rgb(164 172 159);
+  --primary-400: rgb(95 110 88);
+  --primary-500: rgb(27 48 16);
+  --primary-600: rgb(24 43 14);
+  --primary-700: rgb(16 29 10);
+  --primary-800: rgb(12 22 7);
+  --primary-900: rgb(8 14 5);
 
-@keyframes aurora-drift {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-  }
-  25% {
-    transform: translate3d(7%, -5%, 0) rotate(12deg) scale(1.08);
-  }
-  50% {
-    transform: translate3d(-2%, -7%, 0) rotate(4deg) scale(1.02);
-  }
-  75% {
-    transform: translate3d(-6%, 6%, 0) rotate(-10deg) scale(0.95);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-  }
+  --secondary-50: rgb(247 248 248);
+  --secondary-100: rgb(240 242 241);
+  --secondary-200: rgb(217 222 220);
+  --secondary-300: rgb(195 203 199);
+  --secondary-400: rgb(149 163 158);
+  --secondary-500: rgb(104 124 116);
+  --secondary-600: rgb(94 112 104);
+  --secondary-700: rgb(62 74 70);
+  --secondary-800: rgb(47 56 52);
+  --secondary-900: rgb(31 37 35);
+
+  --dark-50: rgb(243 244 245);
+  --dark-100: rgb(230 234 236);
+  --dark-200: rgb(193 202 207);
+  --dark-300: rgb(155 170 177);
+  --dark-400: rgb(81 107 119);
+  --dark-500: rgb(6 43 61);
+  --dark-600: rgb(5 39 55);
+  --dark-700: rgb(4 26 37);
+  --dark-800: rgb(3 19 27);
+  --dark-900: rgb(2 13 18);
+
+  --light-50: rgb(253 253 254);
+  --light-100: rgb(251 252 253);
+  --light-200: rgb(245 247 249);
+  --light-300: rgb(238 242 245);
+  --light-400: rgb(226 233 238);
+  --light-500: rgb(213 223 231);
+  --light-600: rgb(192 201 208);
+  --light-700: rgb(128 134 139);
+  --light-800: rgb(96 100 104);
+  --light-900: rgb(64 67 69);
+
+  --green: rgb(83, 221, 108);
+  --lightgreen: rgb(94, 255, 124);
 }
 
 nav {
@@ -48,9 +62,9 @@ nav {
 }
 
 html {
-  font-family: "PP Neue Gstaad", Arial, Helvetica, sans-serif;
-  background: var(--bwhite);
-  color: var(--secondary);
+  font-family: var(--font-base);
+  background: var(--dark-800);
+  color: var(--light-200);
   font-size: 1.125rem;
 }
 
@@ -63,44 +77,244 @@ body {
   min-height: 100vh;
 }
 
-body::before {
-  content: "";
+/* AURORA BACKGROUND (from the CodePen demo; aurora.js feeds the --mouse-x/--mouse-y/--energy vars) */
+:root {
+  --mouse-x: 0;
+  --mouse-y: 0;
+  --energy: 0;
+}
+
+.aurora-scene {
   position: fixed;
-  inset: -25%;
-  z-index: -1;
+  inset: 0;
+  z-index: -3;
+
+  overflow: hidden;
+
+  width: 100%;
+  min-height: 100vh;
+
   pointer-events: none;
-  background:
-    radial-gradient(
-      circle at 20% 25%,
-      rgba(0, 100, 180, 0.26),
-      transparent 45%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(243, 113, 35, 0.15),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 70% 80%,
-      rgba(0, 100, 180, 0.18),
-      transparent 45%
-    ),
-    radial-gradient(circle at 25% 85%, rgba(0, 34, 68, 0.12), transparent 40%);
-  filter: blur(40px);
-  animation: aurora-drift 22s ease-in-out infinite;
-  will-change: transform;
+}
+
+.aurora-scene .aurora {
+  /* SHIFT ALL AURORAS UP: more negative = higher on the page (0 = original spot) */
+  translate: 0 -15vh;
+}
+
+.aurora {
+  position: absolute;
+
+  border-radius: 45% 55% 62% 38% / 54% 38% 62% 46%;
+
+  filter: blur(90px);
+
+  will-change: transform, border-radius;
+}
+
+.aurora--one {
+  top: 5%;
+  left: -10%;
+
+  width: 52vw;
+  height: 52vw;
+
+  opacity: calc(0.18 + var(--energy) * 0.08);
+
+  background: radial-gradient(
+    circle at 45% 45%,
+    rgba(98, 230, 255, 0.9),
+    rgba(32, 112, 184, 0.4) 38%,
+    transparent 70%
+  );
+
+  transform: translate3d(
+    calc(var(--mouse-x) * 55px),
+    calc(var(--mouse-y) * 38px),
+    0
+  );
+
+  animation: morphOne 12s ease-in-out infinite alternate;
+}
+
+.aurora--two {
+  top: -15%;
+  right: -12%;
+
+  width: 55vw;
+  height: 47vw;
+
+  opacity: calc(0.2 + var(--energy) * 0.1);
+
+  background: radial-gradient(
+    circle at 40% 45%,
+    rgba(156, 124, 255, 0.9),
+    rgba(92, 62, 192, 0.4) 40%,
+    transparent 72%
+  );
+
+  transform: translate3d(
+    calc(var(--mouse-x) * -38px),
+    calc(var(--mouse-y) * -25px),
+    0
+  );
+
+  animation: morphTwo 15s ease-in-out infinite alternate;
+}
+
+.aurora--three {
+  top: 0%;
+  left: 25%;
+
+  width: 48vw;
+  height: 40vw;
+
+  opacity: calc(0.14 + var(--energy) * 0.08);
+
+  background: radial-gradient(
+    circle,
+    rgba(94, 255, 124, 0.9),
+    rgba(94, 255, 124, 0.4) 42%,
+    transparent 72%
+  );
+
+  transform: translate3d(
+    calc(var(--mouse-x) * 28px),
+    calc(var(--mouse-y) * -32px),
+    0
+  );
+
+  animation: morphThree 18s ease-in-out infinite alternate;
+}
+
+.aurora--four {
+  bottom: -25%;
+  left: -5%;
+
+  width: 65vw;
+  height: 45vw;
+
+  opacity: 0.14;
+
+  background: radial-gradient(
+    circle,
+    rgba(69, 108, 255, 0.9),
+    rgba(44, 44, 150, 0.4) 40%,
+    transparent 70%
+  );
+
+  transform: translate3d(
+    calc(var(--mouse-x) * -20px),
+    calc(var(--mouse-y) * 18px),
+    0
+  );
+
+  animation: morphFour 20s ease-in-out infinite alternate;
+}
+
+.aurora--five {
+  right: 10%;
+  bottom: -28%;
+
+  width: 55vw;
+  height: 48vw;
+
+  opacity: 0.1;
+
+  background: radial-gradient(
+    circle,
+    rgba(82, 255, 199, 0.72),
+    transparent 68%
+  );
+
+  transform: translate3d(
+    calc(var(--mouse-x) * 15px),
+    calc(var(--mouse-y) * 12px),
+    0
+  );
+
+  animation: morphFive 17s ease-in-out infinite alternate;
+}
+
+@keyframes morphOne {
+  0% {
+    border-radius: 45% 55% 62% 38% / 54% 38% 62% 46%;
+  }
+
+  100% {
+    border-radius: 62% 38% 42% 58% / 38% 55% 45% 62%;
+  }
+}
+
+@keyframes morphTwo {
+  0% {
+    border-radius: 62% 38% 48% 52% / 38% 58% 42% 62%;
+  }
+
+  100% {
+    border-radius: 40% 60% 65% 35% / 58% 40% 60% 42%;
+  }
+}
+
+@keyframes morphThree {
+  0% {
+    border-radius: 48% 52% 35% 65% / 60% 35% 65% 40%;
+  }
+
+  100% {
+    border-radius: 66% 34% 55% 45% / 42% 62% 38% 58%;
+  }
+}
+
+@keyframes morphFour {
+  0% {
+    border-radius: 40% 60% 55% 45% / 62% 42% 58% 38%;
+  }
+
+  100% {
+    border-radius: 60% 40% 35% 65% / 40% 58% 42% 60%;
+  }
+}
+
+@keyframes morphFive {
+  0% {
+    border-radius: 60% 40% 62% 38% / 46% 64% 36% 54%;
+  }
+
+  100% {
+    border-radius: 38% 62% 45% 55% / 62% 38% 60% 40%;
+  }
+}
+
+@media (max-width: 900px) {
+  .aurora {
+    width: 90vw;
+    height: 80vw;
+  }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .aurora {
+    transform: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body::before {
+  .aurora {
     animation: none;
   }
 }
 
 .hero {
+  padding: 2rem 4rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.content {
   display: flex;
   flex-direction: column;
-  padding: 2rem 4rem;
+  align-items: start;
 }
 
 .link-button {
@@ -108,12 +322,12 @@ body::before {
   align-items: center;
   gap: 0.25em;
   white-space: nowrap;
-  padding: 0.25em 0.5em;
-  background-color: var(--accent);
+  padding: 0.25em 0.75em;
+  background-color: var(--green);
   text-decoration: none;
-  border-radius: 0.6em;
+  border-radius: 1em;
   border: 0;
-  color: var(--bwhite);
+  color: var(--dark-500);
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -129,23 +343,31 @@ body::before {
     transform: translateX(-50%);
     width: 0;
     height: 100%;
-    background: var(--accent-2);
+    background: var(--lightgreen);
     z-index: -1;
     transition: width 150ms ease-in-out;
     border-radius: 12px;
   }
 
   &:hover {
-    color: #fff;
+    color: var(--dark-500);
     &:after {
       width: 110%;
     }
   }
 }
 
-.name,
-.caption {
+.name {
   text-align: center;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-regular);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.caption {
+  font-family: var(--font-regular);
+  font-weight: 300;
   margin-bottom: 0.5rem;
 }
 
@@ -154,27 +376,19 @@ body::before {
   height: 100px;
   object-fit: cover;
   border-radius: 999px;
-  margin: 0.5rem auto;
+  margin: 0.5rem;
 }
 
 .links {
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin: 1rem auto;
 }
 
 p,
 h1 {
   margin: 0 0 0 0;
-}
-
-.bg-blue {
-  background-color: var(--primary);
-  padding: 2rem 4rem;
-  color: var(--bwhite);
 }
 
 .button-img,
@@ -184,24 +398,58 @@ h1 {
   flex-shrink: 0;
 }
 
-.no-bg {
-  padding: 2rem 4rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.pill {
-  padding: 0.25rem 1rem;
-  border-radius: 999px;
-  background-color: var(--primary);
-  color: var(--bwhite);
-}
-
-/* Keep the oversized aurora background from causing sideways scroll */
 html,
 body {
   overflow-x: clip;
+}
+
+@media (min-width: 1400px) {
+  .pfp {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 999px;
+    margin: 0.5rem;
+  }
+
+  .name {
+    font-size: 3rem;
+  }
+
+  .content {
+    font-size: 1.5rem;
+  }
+
+  .link-button {
+    font-size: 1.5rem;
+  }
+
+  .button-img,
+  .link-button svg {
+    height: 30px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  /* Let main fill the space below the nav so the hero can sit in the middle */
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -209,30 +457,33 @@ body {
     padding: 1rem;
   }
 
-  .hero,
-  .bg-blue,
-  .no-bg {
+  .hero {
     padding: 1.5rem 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content {
+    align-items: center;
   }
 
   .name {
     font-size: 1.75rem;
   }
 
+  .caption,
+  .name {
+    text-align: center;
+  }
+
   .links {
     flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
   }
 
   .link-button {
     font-size: 0.9rem;
     padding: 0.5em 0.9em;
-  }
-
-  .bg-blue p {
-    line-height: 1.5;
-  }
-
-  .no-bg {
-    justify-content: center;
   }
 }

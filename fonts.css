@@ -1,0 +1,379 @@
+/* PP Neue Gstaad — one family per width.
+   Pick the width with font-family (or a --font-* variable / .font-* class),
+   then use font-weight (300 light, 400 regular, 700 bold) and font-style: italic. */
+
+/* Regular width */
+@font-face {
+  font-family: "PP Neue Gstaad";
+  src: url("public/PPNeueGstaad-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad";
+  src: url("public/PPNeueGstaad-LightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad";
+  src: url("public/PPNeueGstaad-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad";
+  src: url("public/PPNeueGstaad-RegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad";
+  src: url("public/PPNeueGstaad-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad";
+  src: url("public/PPNeueGstaad-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Compact */
+@font-face {
+  font-family: "PP Neue Gstaad Compact";
+  src: url("public/PPNeueGstaad-CompactLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compact";
+  src: url("public/PPNeueGstaad-CompactLightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compact";
+  src: url("public/PPNeueGstaad-CompactRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compact";
+  src: url("public/PPNeueGstaad-CompactRegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compact";
+  src: url("public/PPNeueGstaad-CompactBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compact";
+  src: url("public/PPNeueGstaad-CompactBoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Compressed */
+@font-face {
+  font-family: "PP Neue Gstaad Compressed";
+  src: url("public/PPNeueGstaad-CompressedLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compressed";
+  src: url("public/PPNeueGstaad-CompressedLightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compressed";
+  src: url("public/PPNeueGstaad-CompressedRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compressed";
+  src: url("public/PPNeueGstaad-CompressedRegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compressed";
+  src: url("public/PPNeueGstaad-CompressedBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Compressed";
+  src: url("public/PPNeueGstaad-CompressedBoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Condensed */
+@font-face {
+  font-family: "PP Neue Gstaad Condensed";
+  src: url("public/PPNeueGstaad-CondensedLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Condensed";
+  src: url("public/PPNeueGstaad-CondensedLightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Condensed";
+  src: url("public/PPNeueGstaad-CondensedRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Condensed";
+  src: url("public/PPNeueGstaad-CondensedRegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Condensed";
+  src: url("public/PPNeueGstaad-CondensedBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Condensed";
+  src: url("public/PPNeueGstaad-CondensedBoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Narrow */
+@font-face {
+  font-family: "PP Neue Gstaad Narrow";
+  src: url("public/PPNeueGstaad-NarrowLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Narrow";
+  src: url("public/PPNeueGstaad-NarrowLightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Narrow";
+  src: url("public/PPNeueGstaad-NarrowRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Narrow";
+  src: url("public/PPNeueGstaad-NarrowRegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Narrow";
+  src: url("public/PPNeueGstaad-NarrowBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Narrow";
+  src: url("public/PPNeueGstaad-NarrowBoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Wide */
+@font-face {
+  font-family: "PP Neue Gstaad Wide";
+  src: url("public/PPNeueGstaad-WideLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Wide";
+  src: url("public/PPNeueGstaad-WideLightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Wide";
+  src: url("public/PPNeueGstaad-WideRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Wide";
+  src: url("public/PPNeueGstaad-WideRegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Wide";
+  src: url("public/PPNeueGstaad-WideBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Wide";
+  src: url("public/PPNeueGstaad-WideBoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Expanded */
+@font-face {
+  font-family: "PP Neue Gstaad Expanded";
+  src: url("public/PPNeueGstaad-ExpandedLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Expanded";
+  src: url("public/PPNeueGstaad-ExpandedLightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Expanded";
+  src: url("public/PPNeueGstaad-ExpandedRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Expanded";
+  src: url("public/PPNeueGstaad-ExpandedRegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Expanded";
+  src: url("public/PPNeueGstaad-ExpandedBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Neue Gstaad Expanded";
+  src: url("public/PPNeueGstaad-ExpandedBoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-fallback: Arial, Helvetica, sans-serif;
+  --font-base: "PP Neue Gstaad", var(--font-fallback);
+  --font-compact: "PP Neue Gstaad Compact", var(--font-fallback);
+  --font-compressed: "PP Neue Gstaad Compressed", var(--font-fallback);
+  --font-condensed: "PP Neue Gstaad Condensed", var(--font-fallback);
+  --font-narrow: "PP Neue Gstaad Narrow", var(--font-fallback);
+  --font-wide: "PP Neue Gstaad Wide", var(--font-fallback);
+  --font-expanded: "PP Neue Gstaad Expanded", var(--font-fallback);
+}
+
+.font-base {
+  font-family: var(--font-base);
+}
+.font-compact {
+  font-family: var(--font-compact);
+}
+.font-compressed {
+  font-family: var(--font-compressed);
+}
+.font-condensed {
+  font-family: var(--font-condensed);
+}
+.font-narrow {
+  font-family: var(--font-narrow);
+}
+.font-wide {
+  font-family: var(--font-wide);
+}
+.font-expanded {
+  font-family: var(--font-expanded);
+}
