@@ -17,5 +17,9 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
+    rules: {
+      // Components used only in JSX would otherwise be flagged as unused
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
   },
 ])

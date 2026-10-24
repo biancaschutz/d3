@@ -1,0 +1,575 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CSS/JS/HTML Basics</title>
+    <link rel="stylesheet" href="basics.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#html-css">HTML/CSS</a></li>
+        <li><a href="#javascript">JavaScript</a></li>
+        <li><a href="#lodash">Lodash</a></li>
+        <li><a href="#js-syntax">JS Syntax</a></li>
+      </ul>
+    </nav>
+
+    <h1>CSS / JS / HTML Basics</h1>
+
+    <!-- ============================================================ -->
+    <!-- PART 1: HTML + CSS                                            -->
+    <!-- ============================================================ -->
+    <h2 id="html-css">1. HTML / CSS</h2>
+    <p class="note">
+      Each example below shows the <strong>rendered</strong> result, the
+      <strong>HTML</strong> that produced it, and notes on the
+      <strong>CSS</strong> from <code>basics.css</code> that styles it.
+    </p>
+
+    <!-- Text & buttons -->
+    <section class="example">
+      <h3>Paragraphs &amp; buttons</h3>
+      <div class="demo">
+        <p>This is my very first website.</p>
+        <button>Click me</button>
+      </div>
+      <pre><code>&lt;p&gt;This is my very first website.&lt;/p&gt;
+&lt;button&gt;Click me&lt;/button&gt;</code></pre>
+      <ul class="css-notes">
+        <li>
+          <code>p { color: #2563eb; }</code> is an <em>element selector</em>, so
+          it applies to every <code>&lt;p&gt;</code> on the page.
+        </li>
+        <li>
+          <code>button</code> has its default border removed
+          (<code>border: none</code>), with rounded corners
+          (<code>border-radius</code>) and <code>cursor: pointer</code>.
+        </li>
+        <li>
+          <code>button:hover</code> is a <em>pseudo-class</em> that darkens the
+          background on hover, and <code>transition</code> animates the change.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Classes -->
+    <section class="example">
+      <h3>Classes: highlight &amp; box</h3>
+      <div class="demo">
+        <p class="highlight">I should be highlighted!</p>
+        <div class="box">Box 1</div>
+      </div>
+      <pre><code>&lt;p class="highlight"&gt;I should be highlighted!&lt;/p&gt;
+&lt;div class="box"&gt;Box 1&lt;/div&gt;</code></pre>
+      <ul class="css-notes">
+        <li>
+          <code>.highlight</code> starts with a dot, so it's a
+          <em>class selector</em>. It only applies to elements with
+          <code>class="highlight"</code>.
+        </li>
+        <li>
+          <code>.box</code> shows the box model: <code>padding</code> is the
+          space inside the border and <code>margin</code> is the space outside
+          it.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Card -->
+    <section class="example">
+      <h3>Card</h3>
+      <div class="demo">
+        <div class="card">
+          <h3 class="card-title">Card Title</h3>
+          <p class="card-text">This is some card content. Make it look nice!</p>
+        </div>
+      </div>
+      <pre><code>&lt;div class="card"&gt;
+  &lt;h3 class="card-title"&gt;Card Title&lt;/h3&gt;
+  &lt;p class="card-text"&gt;This is some card content.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      <ul class="css-notes">
+        <li>
+          <code>box-shadow: 0 2px 4px rgba(0,0,0,0.1)</code> takes x-offset,
+          y-offset, blur, and color. The <code>rgba</code> alpha of 0.1 keeps
+          the shadow subtle.
+        </li>
+        <li>
+          <code>.card-title</code> and <code>.card-text</code> have no CSS yet,
+          so you can style them next.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Blockquote -->
+    <section class="example">
+      <h3>Blockquote</h3>
+      <div class="demo">
+        <blockquote>
+          "The only way to do great work is to love what you do."
+          <cite>— Steve Jobs</cite>
+        </blockquote>
+      </div>
+      <pre><code>&lt;blockquote&gt;
+  "The only way to do great work is to love what you do."
+  &lt;cite&gt;— Steve Jobs&lt;/cite&gt;
+&lt;/blockquote&gt;</code></pre>
+      <ul class="css-notes">
+        <li>
+          <code>border-left: 4px solid #6366f1</code> draws the accent bar on
+          one side only.
+        </li>
+        <li>
+          <code>&lt;cite&gt;</code> is inline by default.
+          <code>display: block</code> puts it on its own line.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Badges -->
+    <section class="example">
+      <h3>Badges (combining classes)</h3>
+      <div class="demo">
+        <span class="badge">Default</span>
+        <span class="badge success">Success</span>
+        <span class="badge warning">Warning</span>
+        <span class="badge error">Error</span>
+      </div>
+      <pre><code>&lt;span class="badge"&gt;Default&lt;/span&gt;
+&lt;span class="badge success"&gt;Success&lt;/span&gt;
+&lt;span class="badge warning"&gt;Warning&lt;/span&gt;
+&lt;span class="badge error"&gt;Error&lt;/span&gt;</code></pre>
+      <ul class="css-notes">
+        <li>
+          An element can have several classes separated by spaces.
+          <code>.badge</code> sets the shape and
+          <code>.success</code>/<code>.warning</code>/<code>.error</code>
+          override only the colors.
+        </li>
+        <li>
+          <code>border-radius: 9999px</code> gives a full "pill" shape at any
+          size.
+        </li>
+        <li>
+          <code>&lt;span&gt;</code> is <em>inline</em>, so the badges sit side
+          by side. A <code>&lt;div&gt;</code> is <em>block</em> and stacks.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Alerts -->
+    <section class="example">
+      <h3>Alerts (reusing classes)</h3>
+      <div class="demo">
+        <div class="alert success">Success! Your changes have been saved.</div>
+        <div class="alert error">Error! Something went wrong.</div>
+      </div>
+      <pre><code>&lt;div class="alert success"&gt;Success! Your changes have been saved.&lt;/div&gt;
+&lt;div class="alert error"&gt;Error! Something went wrong.&lt;/div&gt;</code></pre>
+      <ul class="css-notes">
+        <li>
+          The same <code>.success</code>/<code>.error</code> classes from the
+          badges are reused here. <code>.alert</code> supplies the layout.
+        </li>
+        <li>
+          <code>border-left: 4px solid</code> has no color, so it uses the
+          element's text <code>color</code> (which comes from
+          <code>.success</code> or <code>.error</code>).
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PART 2: JavaScript + the DOM                                  -->
+    <!-- ============================================================ -->
+    <h2 id="javascript">2. Using JavaScript</h2>
+
+    <!-- Inline onclick -->
+    <section class="example">
+      <h3>Inline <code>onclick</code></h3>
+      <div class="demo">
+        <p id="text">Click the button to make me blue!</p>
+        <button onclick="document.getElementById('text').style.color = 'blue'">
+          Turn blue
+        </button>
+      </div>
+      <pre><code>&lt;p id="text"&gt;Click the button to make me blue!&lt;/p&gt;
+&lt;button onclick="document.getElementById('text').style.color = 'blue'"&gt;
+  Turn blue
+&lt;/button&gt;</code></pre>
+      <p class="note">
+        This works, but mixing JS into HTML attributes gets messy fast.
+        <code>addEventListener</code> (below) is preferred.
+      </p>
+    </section>
+
+    <!-- Changing text -->
+    <section class="example">
+      <h3>Changing text on page load</h3>
+      <div class="demo">
+        <p id="greeting">Hello!</p>
+      </div>
+      <script>
+        document.getElementById("greeting").textContent = "Howdy JS!";
+      </script>
+      <pre><code>&lt;p id="greeting"&gt;Hello!&lt;/p&gt;
+
+&lt;script&gt;
+  document.getElementById("greeting").textContent = "Howdy JS!";
+&lt;/script&gt;</code></pre>
+      <p class="note">
+        The script runs right away, so you never see "Hello!". The
+        <code>&lt;script&gt;</code> must come <em>after</em> the element, or
+        <code>getElementById</code> returns <code>null</code>.
+      </p>
+    </section>
+
+    <!-- addEventListener: style -->
+    <section class="example">
+      <h3><code>addEventListener</code>: styling an element</h3>
+      <div class="demo">
+        <p id="movejs">Click the button to style me!</p>
+        <button id="movejsbtn">Style the paragraph</button>
+      </div>
+      <script>
+        document
+          .getElementById("movejsbtn")
+          .addEventListener("click", function () {
+            const movejs = document.getElementById("movejs");
+            movejs.style.border = "2px solid teal";
+            movejs.style.backgroundColor = "#e0f7fa";
+            movejs.style.padding = "12px";
+          });
+      </script>
+      <pre><code>document
+  .getElementById("movejsbtn")
+  .addEventListener("click", function () {
+    const movejs = document.getElementById("movejs");
+    movejs.style.border = "2px solid teal";
+    movejs.style.backgroundColor = "#e0f7fa";
+    movejs.style.padding = "12px";
+  });</code></pre>
+      <p class="note">
+        CSS properties become camelCase in JS: <code>background-color</code>
+        becomes <code>style.backgroundColor</code>.
+      </p>
+    </section>
+
+    <!-- addEventListener: color + weight -->
+    <section class="example">
+      <h3><code>addEventListener</code>: color &amp; weight</h3>
+      <div class="demo">
+        <p id="message">
+          I should turn green and bold when you click the button.
+        </p>
+        <button id="btn">Click me</button>
+      </div>
+      <script>
+        document.getElementById("btn").addEventListener("click", function () {
+          document.getElementById("message").style.color = "green";
+          document.getElementById("message").style.fontWeight = "bold";
+        });
+      </script>
+      <pre><code>document.getElementById("btn").addEventListener("click", function () {
+  document.getElementById("message").style.color = "green";
+  document.getElementById("message").style.fontWeight = "bold";
+});</code></pre>
+    </section>
+
+    <!-- Toggle -->
+    <section class="example">
+      <h3>Toggling visibility</h3>
+      <div class="demo">
+        <button id="vizbtn">Toggle paragraph</button>
+        <p id="viztext">
+          Now you see me! Click the button to make me disappear. Click again to
+          bring me back.
+        </p>
+      </div>
+      <script>
+        document
+          .getElementById("vizbtn")
+          .addEventListener("click", function () {
+            const text = document.getElementById("viztext");
+
+            if (text.style.display === "none") {
+              text.style.display = "block";
+            } else {
+              text.style.display = "none";
+            }
+          });
+      </script>
+      <pre><code>document
+  .getElementById("vizbtn")
+  .addEventListener("click", function () {
+    const text = document.getElementById("viztext");
+
+    if (text.style.display === "none") {
+      text.style.display = "block";
+    } else {
+      text.style.display = "none";
+    }
+  });</code></pre>
+      <p class="note">
+        <code>display: none</code> removes the element from the layout
+        completely. <code>visibility: hidden</code> would hide it but keep its
+        space.
+      </p>
+    </section>
+
+    <!-- Square to circle -->
+    <section class="example">
+      <h3>Turn the square into a circle</h3>
+      <div class="demo">
+        <div
+          id="shape"
+          style="width: 150px; height: 150px; background-color: coral"
+        ></div>
+      </div>
+      <script>
+        const shp = document.getElementById("shape");
+        shp.style.borderRadius = "50%";
+      </script>
+      <pre><code>&lt;div id="shape" style="width: 150px; height: 150px; background-color: coral"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  const shp = document.getElementById("shape");
+  shp.style.borderRadius = "50%";
+&lt;/script&gt;</code></pre>
+      <p class="note">
+        The <code>style="..."</code> attribute is <em>inline CSS</em>. It
+        overrides rules from the stylesheet. <code>border-radius: 50%</code> on
+        a square makes a circle.
+      </p>
+    </section>
+
+    <!-- Barplot -->
+    <section class="example">
+      <h3>My first barplot</h3>
+      <div class="demo">
+        <div id="chart"></div>
+      </div>
+      <script>
+        const data = [120, 200, 80, 260];
+        const chart = document.getElementById("chart");
+
+        // loop: one <div> per data value, width = value in px
+        for (let i = 0; i < data.length; i++) {
+          const bar = document.createElement("div");
+          bar.style.width = data[i] + "px";
+          bar.style.height = "30px";
+          bar.style.backgroundColor = "steelblue";
+          bar.style.marginBottom = "4px";
+          chart.appendChild(bar);
+        }
+      </script>
+      <pre><code>const data = [120, 200, 80, 260];
+const chart = document.getElementById("chart");
+
+for (let i = 0; i &lt; data.length; i++) {
+  const bar = document.createElement("div");
+  bar.style.width = data[i] + "px";
+  bar.style.height = "30px";
+  bar.style.backgroundColor = "steelblue";
+  bar.style.marginBottom = "4px";
+  chart.appendChild(bar);
+}</code></pre>
+      <p class="note">
+        This is what D3 does for you later: it binds data to elements and sets
+        their attributes. Here it's done by hand with
+        <code>createElement</code> + <code>appendChild</code>.
+      </p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PART 3: Libraries (Lodash)                                    -->
+    <!-- ============================================================ -->
+    <h2 id="lodash">3. Shuffle colors with Lodash</h2>
+
+    <section class="example">
+      <div class="demo">
+        <p id="res">Click the button to shuffle!</p>
+        <button id="ldbtn">Shuffle</button>
+      </div>
+
+      <!-- Lodash is loaded from a CDN -->
+      <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+      <script>
+        const colors = ["red", "orange", "yellow", "green", "blue", "purple"];
+
+        document.getElementById("ldbtn").addEventListener("click", function () {
+          const shuffled = _.shuffle(colors);
+          document.getElementById("res").textContent = shuffled.join(", ");
+        });
+      </script>
+      <pre><code>&lt;!-- load the library from a CDN --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  const colors = ["red", "orange", "yellow", "green", "blue", "purple"];
+
+  document.getElementById("ldbtn").addEventListener("click", function () {
+    const shuffled = _.shuffle(colors);
+    document.getElementById("res").textContent = shuffled.join(", ");
+  });
+&lt;/script&gt;</code></pre>
+      <p class="note">
+        Lodash exposes everything on the global <code>_</code> object. The
+        library's <code>&lt;script&gt;</code> must load before the code that
+        uses it.
+      </p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PART 4: JS syntax notes                                       -->
+    <!-- ============================================================ -->
+    <h2 id="js-syntax">4. JS Syntax</h2>
+
+    <section class="example">
+      <h3>Variables</h3>
+      <ul class="css-notes">
+        <li><code>const</code> creates a variable that cannot be reassigned</li>
+        <li><code>let</code> creates a variable that can be reassigned</li>
+      </ul>
+      <pre><code>const name = "Bianca";
+let count = 0;
+count = count + 1; // fine
+// name = "Other";  // TypeError: assignment to constant variable</code></pre>
+    </section>
+
+    <section class="example">
+      <h3>Data types</h3>
+      <p class="note">Strings, numbers, booleans, null and undefined.</p>
+      <pre><code>const s = "hello";      // string
+const n = 42;           // number (ints and floats are the same type)
+const b = true;         // boolean
+const nothing = null;   // intentionally empty
+let notSet;             // undefined (declared, never assigned)</code></pre>
+    </section>
+
+    <section class="example">
+      <h3>Arrays</h3>
+      <p class="note">
+        An ordered list of values. Arrays have properties (e.g.
+        <code>.length</code>) and methods (e.g. <code>.includes()</code>).
+      </p>
+      <pre><code>const numbers = [10, 20, 30, 40];
+
+numbers.length;        // 4
+numbers[0];            // 10
+numbers.includes(30);  // true</code></pre>
+    </section>
+
+    <section class="example">
+      <h3>Objects</h3>
+      <p class="note">
+        A collection of key-value pairs in curly braces. You can access values
+        with dot or bracket notation.
+      </p>
+      <pre><code>const person = { name: "Bianca", age: 24 };
+
+person.name;      // "Bianca"
+person["name"];   // "Bianca"</code></pre>
+      <p class="note">
+        You can nest them. An <strong>array of objects</strong> is the usual
+        shape for chart data:
+      </p>
+      <pre><code>const data = [
+  { name: "Bianca", age: 24 },
+  { name: "Alex", age: 30 },
+];</code></pre>
+    </section>
+
+    <section class="example">
+      <h3>Functions</h3>
+      <p class="note">Modern JS uses arrow functions:</p>
+      <pre><code>// full form
+const addFive = (num) => {
+  return num + 5;
+};
+
+// short form: a single expression is returned automatically
+const addFiveShort = (num) => num + 5;
+
+addFive(10); // 15</code></pre>
+    </section>
+
+    <section class="example">
+      <h3>Conditionals</h3>
+      <p class="note">
+        Use <code>===</code> / <code>!==</code> for equal / not equal. They
+        compare without type conversion. <code>&lt;</code>, <code>&gt;</code>,
+        <code>&lt;=</code>, <code>&gt;=</code> work like other languages.
+      </p>
+      <pre><code>if (age === 24) {
+  console.log("24!");
+} else if (age &gt; 24) {
+  console.log("older");
+} else {
+  console.log("younger");
+}
+
+5 == "5";   // true  (loose — avoid)
+5 === "5";  // false (strict — use this)</code></pre>
+    </section>
+
+    <section class="example">
+      <h3>Logical operators</h3>
+      <pre><code>a &amp;&amp; b   // AND
+a || b   // OR
+!a       // NOT</code></pre>
+    </section>
+
+    <section class="example">
+      <h3>Ternary operator</h3>
+      <p class="note">A short form for simple if/else cases:</p>
+      <pre><code>// condition ? ifTrue : ifFalse
+const label = age &gt;= 18 ? "adult" : "minor";</code></pre>
+    </section>
+
+    <section class="example">
+      <h3><code>map</code></h3>
+      <p class="note">
+        Calls a function on each element and returns a <em>new</em> array of
+        the results. The original is unchanged.
+      </p>
+      <pre><code>const data = [
+  { country: "France", population: 67 },
+  { country: "Germany", population: 83 },
+  { country: "Spain", population: 47 },
+];
+
+// Extract just the country names
+const countries = data.map((d) => {
+  return d.country;
+});
+console.log(countries); // ["France", "Germany", "Spain"]
+
+// Convert population to a label string
+const labels = data.map((d) => {
+  return d.country + ": " + d.population + "M";
+});
+console.log(labels); // ["France: 67M", "Germany: 83M", "Spain: 47M"]</code></pre>
+    </section>
+
+    <section class="example">
+      <h3><code>filter</code></h3>
+      <p class="note">
+        Like <code>map</code>, but the function returns a boolean. Elements
+        that return <code>true</code> are kept.
+      </p>
+      <pre><code>const data = [
+  { country: "France", population: 67 },
+  { country: "Germany", population: 83 },
+  { country: "Spain", population: 47 },
+  { country: "Poland", population: 38 },
+];
+
+// Keep only countries with population &gt; 50
+const large = data.filter((d) => {
+  return d.population &gt; 50;
+});
+console.log(large); // [{ France, 67 }, { Germany, 83 }]</code></pre>
+    </section>
+  </body>
+</html>
