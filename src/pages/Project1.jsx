@@ -15,11 +15,23 @@ export default function Project1() {
       <div className={s.options}>
         {[...TYPES].map((t) => (
           <button
-            style={{ backgroundColor: t === type ? "#ff1f1f" : "" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 2,
+              backgroundColor: t === type ? "#ff1f1f" : "",
+            }}
             key={t}
             onClick={() => switchType(t)}
             className={s.typeButton}
           >
+            <img
+              style={{
+                width: 25,
+                height: 25,
+              }}
+              src={`${import.meta.env.BASE_URL}pokemon_energy/${t.toLowerCase()}.png`}
+            />
             {t}
           </button>
         ))}
