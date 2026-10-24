@@ -1,6 +1,7 @@
 .page {
   padding: 2rem;
   background-color: #363b81;
+  font-family: "Lato", sans-serif;
   width: 100svw;
   min-height: 100vh;
   box-sizing: border-box;
@@ -29,6 +30,7 @@
   column-gap: 0.25rem;
   row-gap: 0.25rem;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .transition {
@@ -43,6 +45,65 @@
   box-sizing: border-box;
   flex-shrink: 0;
   border-radius: 0.5rem;
+  /* Frame colors come from the energy-type class (defaults to Lightning) */
+  --frame-deep: #c98f00;
+  --frame-light: #fff3a8;
+  --frame-base: #fbd743;
+  --frame-mid: #e8b10e;
+  --frame-border: #a87400;
+  background-color: var(--frame-base);
+  /* Diagonal shine so the gradient is visible across the thin border */
+  background-image: linear-gradient(
+    135deg,
+    var(--frame-deep) 0%,
+    var(--frame-light) 20%,
+    var(--frame-base) 35%,
+    var(--frame-mid) 50%,
+    var(--frame-light) 65%,
+    var(--frame-base) 80%,
+    var(--frame-deep) 100%
+  );
+  border: 1px solid var(--frame-border);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.35);
+  /* Anchor for the absolutely positioned shine overlay */
+  position: relative;
+  animation: cardIn 0.4s ease-out both;
+}
+
+/* Overlay that sweeps a white shine across the whole card on hover */
+.cardShine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  /* Let clicks and hovers pass through to the card */
+  pointer-events: none;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 37%,
+    rgba(255, 255, 255, 0.8) 45%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  background-repeat: no-repeat;
+  background-size: 250% 250%;
+  /* Shine starts parked off the bottom-right corner */
+  background-position: 100% 100%;
+  /* Snap back instantly when the mouse leaves */
+  transition: background-position 0s ease;
+}
+
+.cardMain:hover .cardShine {
+  background-position: 0 0;
+  transition-duration: 0.5s;
+}
+
+.cardContent {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
   /* Keep child margins (e.g. the h2) inside so the image isn't pushed down */
   display: flow-root;
   overflow: hidden;
@@ -59,19 +120,103 @@
 
   /* Always provide a fallback color if the image fails to load */
   background-color: #2c3e50;
-  box-shadow: 1rem;
+  /* Dark inner edge to separate the art from the gold frame */
+  border-radius: 0.25rem;
+  box-shadow:
+    0 0 0 1px var(--frame-border),
+    inset 0 0 6px rgba(0, 0, 0, 0.4);
+  color: black;
 }
 
-.cardContent {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  background-color: #fbd743;
-  background-image: radial-gradient(
-    circle at center,
-    #fff3a8 0%,
-    #fbd743 50%,
-    #e8b10e 100%
+/* Energy-type frame colors, applied alongside .cardMain */
+
+/* Grass Energy: Grass, Bug */
+.grass {
+  --frame-deep: #2e7d32;
+  --frame-light: #c8f0a8;
+  --frame-base: #6cc04a;
+  --frame-mid: #43a047;
+  --frame-border: #1b5e20;
+}
+
+/* Fire Energy */
+.fire {
+  --frame-deep: #b71c1c;
+  --frame-light: #ffc4a8;
+  --frame-base: #f05a3c;
+  --frame-mid: #d32f2f;
+  --frame-border: #7f0000;
+}
+
+/* Water Energy */
+.water {
+  --frame-deep: #0d47a1;
+  --frame-light: #b3e0ff;
+  --frame-base: #42a5f5;
+  --frame-mid: #1e88e5;
+  --frame-border: #0a3474;
+}
+
+/* Lightning Energy */
+.electric {
+  --frame-deep: #c98f00;
+  --frame-light: #fff3a8;
+  --frame-base: #fbd743;
+  --frame-mid: #e8b10e;
+  --frame-border: #a87400;
+}
+
+/* Psychic Energy: Psychic, Poison, Ghost */
+.psychic,
+.ghost {
+  --frame-deep: #5e2a84;
+  --frame-light: #e6c6ff;
+  --frame-base: #a35fd0;
+  --frame-mid: #7b3fa8;
+  --frame-border: #3f1a5c;
+}
+
+/* Fighting Energy */
+.fighting {
+  --frame-deep: #7a2a14;
+  --frame-light: #f5b99a;
+  --frame-base: #c8502c;
+  --frame-mid: #a33a1e;
+  --frame-border: #4f1a0b;
+}
+
+/* Rock, Ground: earthy brown */
+.rock,
+.ground {
+  --frame-deep: #6d3b1a;
+  --frame-light: #f1c9a0;
+  --frame-base: #c27a3e;
+  --frame-mid: #9c5a2a;
+  --frame-border: #4a260f;
+}
+
+/* Colorless Energy: Normal, Flying */
+.normal,
+.flying,
+.colorless {
+  --frame-deep: #b8b8b0;
+  --frame-light: #ffffff;
+  --frame-base: #ecebe4;
+  --frame-mid: #d6d5cc;
+  --frame-border: #8f8f86;
+}
+
+/* Dragon: no basic energy, so use a multi-colored frame */
+.dragon {
+  --frame-border: #5a4a1a;
+  background-image: linear-gradient(
+    135deg,
+    #c62828 0%,
+    #f9a825 20%,
+    #43a047 40%,
+    #1e88e5 60%,
+    #8e24aa 80%,
+    #c62828 100%
   );
 }
 
@@ -88,4 +233,22 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(90deg, #0089ad 0%, #64ad6b 100%);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
