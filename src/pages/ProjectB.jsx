@@ -49,6 +49,10 @@ export default function ProjectB() {
         Task: Using fundamentals of React, build a small Pokemon explorer app.
         Display a grid of Pokemon cards and add some sort of interactivity to
         the app.
+        <p>
+          AI Disclaimer: I used Claude to add the CSS animations and to debug
+          some minor styling issues.
+        </p>
       </div>
     </div>
   );

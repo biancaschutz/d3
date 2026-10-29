@@ -13,9 +13,9 @@ export default function Project1() {
         number of students from each country who enrolled in the first cohort of
         this course.
         <p>
-          I used Claude to understand the React-side implementation of scale
-          functions scaleLinear() and scaleBand(), render the flag icons, and
-          the CSS animations.
+          AI Disclaimer: I used Claude to understand the React-side
+          implementation of scale functions scaleLinear() and scaleBand(),
+          render the flag icons, and the CSS animations.
         </p>
       </div>
     </div>
