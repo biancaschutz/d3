@@ -1,4 +1,4 @@
-import CohortBars from "../charts/project1/BarChart";
+import CohortBars from "../charts/project1/CohortBars";
 import data from "../data/cohortStudents";
 
 export default function Project1() {
@@ -8,7 +8,7 @@ export default function Project1() {
       <div>
         <CohortBars data={data} />
       </div>
-      <div style={{ paddingTop: "20px", fontSize: ".5rem" }}>
+      <div style={{ paddingTop: "20px", fontSize: ".75rem" }}>
         Task: Using d3 and AI, build a horizontal barplot that visualizes the
         number of students from each country who enrolled in the first cohort of
         this course.
