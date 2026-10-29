@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import ProjectB from "./pages/ProjectB";
 import Project1 from "./pages/Project1";
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/project1" element={<Project1 />} />
+          <Route path="/moduleb" element={<ProjectB />} />
+          <Route path="/module1" element={<Project1 />} />
         </Routes>
       </main>
     </>

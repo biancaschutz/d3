@@ -1,48 +1,22 @@
-import { useState } from "react";
-import pokemons from "../data/pokemon";
-import s from "../styles/project1.module.css";
-import PokemonCard from "../components/project1/PokemonCard";
-import PokemonLogo from "../components/project1/PokemonLogo";
-
-const TYPES = new Set(pokemons.map((p) => p.type));
+import CohortBars from "../charts/project1/BarChart";
+import data from "../data/cohortStudents";
 
 export default function Project1() {
-  const [type, switchType] = useState("Grass");
-
   return (
-    <div className={s.page}>
-      <PokemonLogo />
-      <div className={s.options}>
-        {[...TYPES].map((t) => (
-          <button
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 2,
-              backgroundColor: t === type ? "#ff1f1f" : "",
-            }}
-            key={t}
-            onClick={() => switchType(t)}
-            className={s.typeButton}
-          >
-            <img
-              style={{
-                width: 25,
-                height: 25,
-              }}
-              src={`${import.meta.env.BASE_URL}pokemon_energy/${t.toLowerCase()}.png`}
-            />
-            {t}
-          </button>
-        ))}
+    <div style={{ padding: "0 20px" }}>
+      <h1>Who in the 🌎 is learning d3?</h1>
+      <div>
+        <CohortBars data={data} />
       </div>
-
-      <div className={s.cardGrid}>
-        {pokemons
-          .filter((p) => p.type === type)
-          .map((p, i) => (
-            <PokemonCard key={p.id} pokemonData={p} index={i} />
-          ))}
+      <div style={{ paddingTop: "20px", fontSize: ".5rem" }}>
+        Task: Using d3 and AI, build a horizontal barplot that visualizes the
+        number of students from each country who enrolled in the first cohort of
+        this course.
+        <p>
+          I used Claude to understand the React-side implementation of scale
+          functions scaleLinear() and scaleBand(), render the flag icons, and
+          the CSS animations.
+        </p>
       </div>
     </div>
   );

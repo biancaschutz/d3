@@ -3,7 +3,10 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const links = [{ to: "/", label: "Home" }];
 
-const projects = [{ to: "/project1", label: "Project 1" }];
+const projects = [
+  { to: "/moduleb", label: "Intro to React" },
+  { to: "/module1", label: "Intro to d3" },
+];
 
 function ProjectsMenu() {
   const [open, setOpen] = useState(false);

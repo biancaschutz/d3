@@ -1,4 +1,4 @@
-import s from "../../styles/project1.module.css";
+import s from "../../styles/projectB.module.css";
 import RelativeChart from "./AttackChart";
 
 const MAX_STRENGTH = 140;
